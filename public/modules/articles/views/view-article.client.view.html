@@ -1,7 +1,40 @@
 <section data-ng-controller="ArticlesController" data-ng-init="findOne()">
-	<div class="page-header">
-		<h1 data-ng-bind="article.title"></h1>
+
+<div class="container" style="padding-top:40px;">
+		<table class="table table-bordered table-hover">
+			<thead>
+				<tr>
+					<th>Title</th>
+					<th>Type</th>
+					<th>Category</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="success">
+					<th>{{article.title}}</th>
+					<th>{{article.type}}</th>
+					<th>{{article.category}}</th>
+				</tr>
+			</tbody>	
+		</table>
 	</div>
+
+	<!-- <div class="page-header col-md-12">
+		<div class="col-md-4">
+			<h1 data-ng-bind="article.title"></h1>
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<div class="col-md-4">
+			<h1 data-ng-bind="article.type"></h1>
+		</div>
+
+		<div class="col-md-4">
+			<h1 data-ng-bind="article.category"></h1>
+		</div>
+	</div> -->
+	
 	<div class="pull-right" data-ng-show="authentication.user._id == article.user._id">
 		<a class="btn btn-primary" href="/#!/articles/{{article._id}}/edit">
 			<i class="glyphicon glyphicon-edit"></i>

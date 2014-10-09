@@ -18,6 +18,15 @@ Work done/ steps taken/ lessons learnt
 --------------------------------------------
 Iteration 1:
 - Get role based authentication working so that only the employers can post jobs
+---This is working in the sense that employers (role 'admin') can only post jobs ('articles')
+---Also look at the enum function in role in schema
+
+Iteration 2: [Create a new branch]
+- Rename all files from articles to jobs
+- Mash replace in sublime text Articles -> Jobs & articles -> jobs
+- Try to not make different schemas for candidate and employer, instead use a mixed schema ie. a profile field in the user that has all the fields required for both but takes in & displays only the role relevant ones.  
+
+
 
 
 

@@ -1,18 +1,36 @@
 <section data-ng-controller="ArticlesController">
 	<div class="page-header">
-		<h1>New Article</h1>
+		<h1>New Job</h1>
 	</div>
 	<div class="col-md-12">
 		<form name="articleForm" class="form-horizontal" data-ng-submit="create()" novalidate>
 			<fieldset>
-				<div class="form-group" ng-class="{ 'has-error': articleForm.title.$dirty && articleForm.title.$invalid }">
-					<label class="control-label" for="title">Title</label>
-					<div class="controls">
-						<input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="Title" required>
+				<div class="col-md-4">
+					<div class="form-group" ng-class="{ 'has-error': articleForm.title.$dirty && articleForm.title.$invalid }">
+						<label class="control-label" for="title">Title</label>
+						<div class="controls">
+							<input name="title" type="text" data-ng-model="title" id="title" class="form-control" placeholder="Job Title" required>
+						</div>
 					</div>
 				</div>
+
+				<div class="col-md-4 form-group">
+					<label class="control-label" for="category">Job Category</label>
+						<div class="controls">
+							<select data-ng-model="category" class="form-control" placeholder="Job Category" ng-options="category.name for category in jobCategories" value="{{category.name}}"></select><br>
+						</div>
+				</div>
+
+				<div class="col-md-4 form-group">
+					<label class="control-label" for="type">Job Type</label>
+						<div class="controls">
+							<select data-ng-model="type" class="form-control" placeholder="Job Type" ng-options="type.name for type in jobTypes" value="{{type.name}}"></select><br> 
+						</div>
+				</div>
+
+
 				<div class="form-group">
-					<label class="control-label" for="content">Content</label>
+					<label class="control-label" for="content">Job Description</label>
 					<div class="controls">
 						<textarea name="content" data-ng-model="content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
 					</div>
