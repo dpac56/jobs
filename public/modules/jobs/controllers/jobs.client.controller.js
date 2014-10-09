@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Articles',
-	function($scope, $stateParams, $location, Authentication, Articles) {
+angular.module('jobs').controller('JobsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Jobs',
+	function($scope, $stateParams, $location, Authentication, Jobs) {
 		$scope.authentication = Authentication;
 
 		 $scope.jobCategories = [
@@ -23,14 +23,14 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
     $scope.type = $scope.jobTypes[0];
 
 		$scope.create = function() {
-			var article = new Articles({
+			var job = new Jobs({
 				title: this.title,
 				content: this.content,
 				category: this.category.name,
 				type: this.type.name
 			});
-			article.$save(function(response) {
-				$location.path('articles/' + response._id);
+			job.$save(function(response) {
+				$location.path('jobs/' + response._id);
 
 				$scope.title = '';
 				$scope.content = '';
@@ -39,40 +39,40 @@ angular.module('articles').controller('ArticlesController', ['$scope', '$statePa
 			});
 		};
 
-		$scope.remove = function(article) {
-			if (article) {
-				article.$remove();
+		$scope.remove = function(job) {
+			if (job) {
+				job.$remove();
 
-				for (var i in $scope.articles) {
-					if ($scope.articles[i] === article) {
-						$scope.articles.splice(i, 1);
+				for (var i in $scope.jobs) {
+					if ($scope.jobs[i] === job) {
+						$scope.jobs.splice(i, 1);
 					}
 				}
 			} else {
-				$scope.article.$remove(function() {
-					$location.path('articles');
+				$scope.job.$remove(function() {
+					$location.path('jobs');
 				});
 			}
 		};
 
 		$scope.update = function() {
-			var article = $scope.article;
+			var job = $scope.job;
 
-			article.$update(function() {
-				$location.path('articles/' + article._id);
+			job.$update(function() {
+				$location.path('jobs/' + job._id);
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
 		};
 
 		$scope.find = function() {
-			$scope.articles = Articles.query();
+			$scope.jobs = Jobs.query();
 			console.log($scope.authentication.user.roles);
 		};
 
 		$scope.findOne = function() {
-			$scope.article = Articles.get({
-				articleId: $stateParams.articleId
+			$scope.job = Jobs.get({
+				jobId: $stateParams.jobId
 			});
 		};
 	}

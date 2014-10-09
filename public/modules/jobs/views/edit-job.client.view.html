@@ -1,0 +1,35 @@
+<section data-ng-controller="JobsController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1>Edit Job</h1>
+	</div>
+	<div class="col-md-12">
+		<form name="jobForm" class="form-horizontal" data-ng-submit="update(jobForm.$valid)" novalidate>
+			<fieldset>
+				<div class="form-group" ng-class="{ 'has-error' : submitted && jobForm.title.$invalid}">
+					<label class="control-label" for="title">Title</label>
+					<div class="controls">
+						<input name="title" type="text" data-ng-model="job.title" id="title" class="form-control" placeholder="Title" required>
+					</div>
+					<div ng-show="submitted && jobForm.title.$invalid" class="help-block">
+						<p ng-show="jobForm.title.$error.required" class="text-danger">Title is required</p>
+					</div>
+				</div>
+				<div class="form-group" ng-class="{ 'has-error' : submitted && jobForm.content.$invalid}">
+					<label class="control-label" for="content">Content</label>
+					<div class="controls">
+						<textarea name="content" data-ng-model="job.content" id="content" class="form-control" cols="30" rows="10" placeholder="Content" required></textarea>
+					</div>
+					<div ng-show="submitted && jobForm.content.$invalid" class="help-block">
+						<p ng-show="jobForm.content.$error.required" class="text-danger">Content is required</p>
+					</div>
+				</div>
+				<div class="form-group">
+					<input type="submit" value="Update" class="btn btn-default">
+				</div>
+				<div data-ng-show="error" class="text-danger">
+					<strong data-ng-bind="error"></strong>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</section>

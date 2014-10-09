@@ -6,8 +6,8 @@ Work done/ steps taken/ lessons learnt
 5. We can find the above express route in app/routes/users where this route has a post to users.signup. users is module imported by 'require' at the top and can be found in app/controllers/users
 6. In the above 'authentication' module we find what we were looking for - the signup function which is creating a new user from the defined User Schema
 7. S0, now we can add a role field to the User Schema in the Signup function in 6 above
-8. In articles.server.controller we added a new function 'hasRoleAuthorization' - this basically returns true if the role is admin
-9. To check for the role checking functionality, we added a 'hasRoleAuthorization' field in post function in articles.server.routes. As expected, only for the accounts that have admin functionality is the the article post function now working. 
+8. In jobs.server.controller we added a new function 'hasRoleAuthorization' - this basically returns true if the role is admin
+9. To check for the role checking functionality, we added a 'hasRoleAuthorization' field in post function in jobs.server.routes. As expected, only for the accounts that have admin functionality is the the job post function now working. 
 
 
 
@@ -18,12 +18,12 @@ Work done/ steps taken/ lessons learnt
 --------------------------------------------
 Iteration 1:
 - Get role based authentication working so that only the employers can post jobs
----This is working in the sense that employers (role 'admin') can only post jobs ('articles')
+---This is working in the sense that employers (role 'admin') can only post jobs ('jobs')
 ---Also look at the enum function in role in schema
 
 Iteration 2: [Create a new branch]
-- Rename all files from articles to jobs
-- Mash replace in sublime text Articles -> Jobs & articles -> jobs
+- Rename all files from jobs to jobs
+- Mash replace in sublime text Jobs -> Jobs & jobs -> jobs
 - Try to not make different schemas for candidate and employer, instead use a mixed schema ie. a profile field in the user that has all the fields required for both but takes in & displays only the role relevant ones.  
 
 

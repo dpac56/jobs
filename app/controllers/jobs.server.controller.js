@@ -5,103 +5,103 @@
  */
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors'),
-	Article = mongoose.model('Article'),
+	Job = mongoose.model('Job'),
 	//Auth = require('../lib/auth'),
 	_ = require('lodash');
 
 /**
- * Create a article
+ * Create a job
  */
 exports.create = function(req, res) {
-	var article = new Article(req.body);
-	article.user = req.user;
+	var job = new Job(req.body);
+	job.user = req.user;
 
-	article.save(function(err) {
+	job.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(article);
+			res.jsonp(job);
 		}
 	});
 };
 
 /**
- * Show the current article
+ * Show the current job
  */
 exports.read = function(req, res) {
-	res.jsonp(req.article);
+	res.jsonp(req.job);
 };
 
 /**
- * Update a article
+ * Update a job
  */
 exports.update = function(req, res) {
-	var article = req.article;
+	var job = req.job;
 
-	article = _.extend(article, req.body);
+	job = _.extend(job, req.body);
 
-	article.save(function(err) {
+	job.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(article);
+			res.jsonp(job);
 		}
 	});
 };
 
 /**
- * Delete an article
+ * Delete an job
  */
 exports.delete = function(req, res) {
-	var article = req.article;
+	var job = req.job;
 
-	article.remove(function(err) {
+	job.remove(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(article);
+			res.jsonp(job);
 		}
 	});
 };
 
 /**
- * List of Articles
+ * List of Jobs
  */
 exports.list = function(req, res) {
-	Article.find().sort('-created').populate('user', 'displayName').exec(function(err, articles) {
+	Job.find().sort('-created').populate('user', 'displayName').exec(function(err, jobs) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(articles);
+			res.jsonp(jobs);
 		}
 	});
 };
 
 /**
- * Article middleware
+ * Job middleware
  */
-exports.articleByID = function(req, res, next, id) {
-	Article.findById(id).populate('user', 'displayName').exec(function(err, article) {
+exports.jobByID = function(req, res, next, id) {
+	Job.findById(id).populate('user', 'displayName').exec(function(err, job) {
 		if (err) return next(err);
-		if (!article) return next(new Error('Failed to load article ' + id));
-		req.article = article;
+		if (!job) return next(new Error('Failed to load job ' + id));
+		req.job = job;
 		next();
 	});
 };
 
 /**
- * Article authorization middleware
+ * Job authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-	if (req.article.user.id !== req.user.id) {
+	if (req.job.user.id !== req.user.id) {
 		return res.status(403).send({
 			message: 'User is not authorized'
 		});
