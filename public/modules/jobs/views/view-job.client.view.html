@@ -7,6 +7,7 @@
 					<th>Title</th>
 					<th>Type</th>
 					<th>Category</th>
+					<th>Industry</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -14,6 +15,7 @@
 					<th>{{job.title}}</th>
 					<th>{{job.type}}</th>
 					<th>{{job.category}}</th>
+					<th></th>
 				</tr>
 			</tbody>	
 		</table>
@@ -48,6 +50,7 @@
 			Posted on
 			<span data-ng-bind="job.created | date:'mediumDate'"></span>
 			by
+			<span data-ng-bind="job.user.profile.employer.companyName"></span>
 			<span data-ng-bind="job.user.displayName"></span>
 		</em>
 	</small>

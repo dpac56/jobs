@@ -8,6 +8,9 @@ Work done/ steps taken/ lessons learnt
 7. S0, now we can add a role field to the User Schema in the Signup function in 6 above
 8. In jobs.server.controller we added a new function 'hasRoleAuthorization' - this basically returns true if the role is admin
 9. To check for the role checking functionality, we added a 'hasRoleAuthorization' field in post function in jobs.server.routes. As expected, only for the accounts that have admin functionality is the the job post function now working. 
+10. Express routes without the hash bang would simply show the JSON object being returned
+11. There is a mixed data type that can be used in schema, then try to iterate over that field in the view rather than hard coding fields in the schema
+12. jobs.server.controller had a jobById function that was limiting what was being sent in the user item, by removing the limit we can send the complete user object
 
 
 
@@ -22,9 +25,15 @@ Iteration 1:
 ---Also look at the enum function in role in schema
 
 Iteration 2: [Create a new branch]
-- Rename all files from jobs to jobs
-- Mash replace in sublime text Jobs -> Jobs & jobs -> jobs
-- Try to not make different schemas for candidate and employer, instead use a mixed schema ie. a profile field in the user that has all the fields required for both but takes in & displays only the role relevant ones.  
+- Make complete employer profiles
+--- Rename all files from jobs to jobs
+--- Mash replace in sublime text Jobs -> Jobs & jobs -> jobs
+--- Try to not make different schemas for candidate and employer, instead use a mixed schema ie. a profile field in the user that has all the fields required for both but takes in & displays only the role relevant ones.  
+
+Iteration 3: 
+- Complete single job listing page
+--- Make sure that only the relevant user fields are being sent along with the job object (not the sensitive ones)
+--- Figure out the file upload directive and the relation with mongoose
 
 
 

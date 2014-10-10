@@ -37,6 +37,42 @@ var UserSchema = new Schema({
 		default: '',
 		validate: [validateLocalStrategyProperty, 'Please fill in your last name']
 	},
+	profile:{
+		employer:{
+			companyName:{
+				type: String,
+				trim: true,
+				default: ''
+			}, 
+			industry: {
+				type: String,
+				trim: true,
+				default: ''
+			},
+			contactAddress: {
+				type: String,
+				trim: true,
+				default: ''
+			}
+		},
+		candidate:{
+			highestEducationalQual:{
+				type: String,
+				trim: true,
+				default: ''
+			},
+			currentProfessionalStatus:{
+				type: String,
+				trim: true,
+				default: ''
+			},
+			coreSkills:{
+				type: String,
+				trim: true,
+				default: ''
+			}
+		}
+	},
 	displayName: {
 		type: String,
 		trim: true

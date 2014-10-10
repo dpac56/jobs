@@ -89,7 +89,7 @@ exports.list = function(req, res) {
  * Job middleware
  */
 exports.jobByID = function(req, res, next, id) {
-	Job.findById(id).populate('user', 'displayName').exec(function(err, job) {
+	Job.findById(id).populate('user').exec(function(err, job) {
 		if (err) return next(err);
 		if (!job) return next(new Error('Failed to load job ' + id));
 		req.job = job;

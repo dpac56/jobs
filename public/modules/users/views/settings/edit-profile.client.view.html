@@ -19,6 +19,45 @@
 					<label for="username">Username</label>
 					<input type="text" id="username" name="username" class="form-control" data-ng-model="user.username" placeholder="Username">
 				</div>
+				<!-- Employer Role specific profile starts-->
+				<div ng-show="user.roles.indexOf('admin')!==-1">
+					<div class="form-group">
+						<label for="companyName">Company Name</label>
+						<input type="text" id="companyName" name="companyName" class="form-control" data-ng-model="user.profile.employer.companyName" placeholder="Company Name">
+					</div>
+
+					<div class="form-group">
+						<label for="industry">Industry</label>
+						<input type="text" id="industry" name="industry" class="form-control" data-ng-model="user.profile.employer.industry" placeholder="Industry">
+					</div>
+
+					<div class="form-group">
+						<label for="contactAddress">Contact Address</label>
+						<input type="text" id="contactAddress" name="contactAddress" class="form-control" data-ng-model="user.profile.employer.contactAddress" placeholder="Contact Address">
+					</div>
+				</div>
+				<!-- Employer Role specific profile Ends-->
+				<!-- Candidate Role specific profile starts-->
+				<div ng-show="user.roles.indexOf('user')!==-1">
+					<div class="form-group">
+						<label for="highestEducationalQual">Highest Educational Qualification</label>
+						<input type="text" id="highestEducationalQual" name="highestEducationalQual" class="form-control" data-ng-model="user.profile.candidate.highestEducationalQual" placeholder="Highest Educational Qualification">
+					</div>
+
+					<div class="form-group">
+						<label for="currentProfessionalStatus">Current Professional Status</label>
+						<input type="text" id="currentProfessionalStatus" name="currentProfessionalStatus" class="form-control" data-ng-model="user.profile.candidate.currentProfessionalStatus" placeholder="Current Professional Status">
+					</div>
+
+					<div class="form-group">
+						<label for="coreSkills">Core Skills</label>
+						<input type="text" id="coreSkills" name="coreSkills" class="form-control" data-ng-model="user.profile.candidate.coreSkills" placeholder="Highest Educational Qualification">
+					</div>
+				</div>
+
+
+
+				<!-- Candidate Role specific profile ends -->
 				<div class="text-center form-group">
 					<button type="submit" class="btn btn-large btn-primary">Save Profile</button>
 				</div>

@@ -75,5 +75,11 @@ angular.module('jobs').controller('JobsController', ['$scope', '$stateParams', '
 				jobId: $stateParams.jobId
 			});
 		};
+
+    $scope.findUser = function() {
+      $scope.job = Jobs.get({
+        jobId: $stateParams.jobId
+      });
+    };
 	}
 ]);
