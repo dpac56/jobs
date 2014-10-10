@@ -44,6 +44,9 @@ var UserSchema = new Schema({
 				trim: true,
 				default: ''
 			}, 
+			logo: {
+				type: Buffer
+			},
 			industry: {
 				type: String,
 				trim: true,
