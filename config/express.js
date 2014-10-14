@@ -20,6 +20,9 @@ var express = require('express'),
 	consolidate = require('consolidate'),
 	path = require('path');
 
+var multipart = require('connect-multiparty');
+
+
 module.exports = function(db) {
 	// Initialize express app
 	var app = express();
@@ -139,6 +142,12 @@ module.exports = function(db) {
 			error: 'Not Found'
 		});
 	});
+
+	//for file upload
+	app.use(multipart({
+		uploadDir: config.tmp
+		}
+	));
 
 	return app;
 };

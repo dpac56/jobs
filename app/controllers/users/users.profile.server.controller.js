@@ -54,3 +54,16 @@ exports.update = function(req, res) {
 exports.me = function(req, res) {
 	res.jsonp(req.user || null);
 };
+
+/**
+ * Create file upload
+ */
+exports.fileUpload = function (req, res, next) {
+    var data = _.pick(req.body, 'type')
+        , uploadPath = path.normalize(cfg.data + '/uploads')
+        , file = req.files.file;
+
+        console.log(file.name); //original name (ie: sunset.png)
+        console.log(file.path); //tmp path (ie: /tmp/12345-xyaz.png)
+    console.log(uploadPath); //uploads directory: (ie: /home/user/data/uploads)
+};
