@@ -18,7 +18,9 @@ var express = require('express'),
 	flash = require('connect-flash'),
 	config = require('./config'),
 	consolidate = require('consolidate'),
+	Mailgun = require('mailgun-js'),
 	path = require('path');
+
 
 module.exports = function(db) {
 	// Initialize express app

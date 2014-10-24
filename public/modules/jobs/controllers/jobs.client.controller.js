@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('jobs').controller('JobsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Jobs',
-	function($scope, $stateParams, $location, Authentication, Jobs) {
+angular.module('jobs').controller('JobsController', ['$scope', '$http', '$stateParams', '$location', 'Authentication', 'Jobs',
+	function($scope, $http, $stateParams, $location, Authentication, Jobs) {
 		$scope.authentication = Authentication;
 
 		 $scope.jobCategories = [
@@ -73,6 +73,13 @@ angular.module('jobs').controller('JobsController', ['$scope', '$stateParams', '
 		$scope.findOne = function() {
 			$scope.job = Jobs.get({
 				jobId: $stateParams.jobId
+			});
+		};
+
+		$scope.sendMail = function(){
+			// console.log($scope.job.user.email);
+			$http.post('/sendmail', {msg: $scope.message, subject: $scope.subject, email: $scope.job.user.email}).success(function(){
+				console.info('sendmail function');
 			});
 		};
 

@@ -17,6 +17,9 @@ module.exports = function(app) {
 		.put(users.requiresLogin, jobs.hasAuthorization, jobs.update)
 		.delete(users.requiresLogin, jobs.hasAuthorization, jobs.delete);
 
+	app.route('/sendmail')
+		.post(jobs.sendMail);
+
 	// Finish by binding the job middleware
 	app.param('jobId', jobs.jobByID);
 };

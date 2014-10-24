@@ -9,6 +9,16 @@ var mongoose = require('mongoose'),
 	//Auth = require('../lib/auth'),
 	_ = require('lodash');
 
+var Mailgun = require('mailgun-js');
+
+//Your api key, from Mailgun’s Control Panel
+var api_key = 'key-c2cf3cd75e9676a5dd8f6bba3fdb4c4a';
+
+//Your domain, from the Mailgun Control Panel
+var domain = 'sandbox91972e7ec52c4e69ad16277fd8c26a8f.mailgun.org';
+
+//Your sending email address
+var from_who = 'deepak@withstartups.com';
 /**
  * Create a job
  */
@@ -26,6 +36,34 @@ exports.create = function(req, res) {
 		}
 	});
 };
+
+exports.sendMail = function(req, res){
+	var mailgun = new Mailgun({apiKey: api_key, domain: domain});
+
+	var data = {
+    //Specify email data
+      from: from_who,
+    //The email to contact
+      to: req.body.email,
+    //Subject and text data  
+      subject: req.body.subject,
+      html: req.body.msg
+    }
+
+    mailgun.messages().send(data, function (err, body) {
+        //If there is an error, render the error page
+        if (err) {
+            console.log("got an error: ", err);
+        }
+        //Else we can greet    and leave
+        else {
+            console.log("message sent by sendmail");
+        }
+    });
+
+    console.log("subject is " + req.body.subject + "and message is " + req.body.msg);
+};
+
 
 /**
  * Show the current job
