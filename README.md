@@ -11,6 +11,12 @@ Work done/ steps taken/ lessons learnt
 10. Express routes without the hash bang would simply show the JSON object being returned
 11. There is a mixed data type that can be used in schema, then try to iterate over that field in the view rather than hard coding fields in the schema
 12. jobs.server.controller had a jobById function that was limiting what was being sent in the user item, by removing the limit we can send the complete user object
+**Some steps may be missing
+13. Send email functionality: Add a form in view-job.view with a function sendMail() that call a express route in jobs.server.routes ('/sendmail') that calls an export.sendmail function in jobs.server.controller. The mailgun configuration is also happening in the same file at the moment. [The email is being sent twice at the moment]
+14. Set up a LinkedIn app and configure the credentials in config/env/development.js
+15. In linkedin.js you can add more profile fields by changing the array profileFields
+
+
 
 
 

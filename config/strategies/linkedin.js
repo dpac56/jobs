@@ -16,13 +16,25 @@ module.exports = function() {
 			consumerSecret: config.linkedin.clientSecret,
 			callbackURL: config.linkedin.callbackURL,
 			passReqToCallback: true,
-			profileFields: ['id', 'first-name', 'last-name', 'email-address']
+			profileFields: [
+				'id', 
+				'first-name', 
+				'last-name', 
+				'email-address', 
+				'picture-url', 
+				'headline',
+				'three-current-positions',
+				'three-past-positions',
+				'educations',
+				'skills'
+			]
 		},
 		function(req, accessToken, refreshToken, profile, done) {
 			// Set the provider data and include tokens
 			var providerData = profile._json;
 			providerData.accessToken = accessToken;
 			providerData.refreshToken = refreshToken;
+			console.log(providerData);
 
 			// Create the user OAuth profile
 			var providerUserProfile = {

@@ -66,8 +66,8 @@ var UserSchema = new Schema({
 				trim: true,
 				default: ''
 			},
-			coreSkills:{
-				type: String,
+			skills:{
+				type: Array,
 				trim: true,
 				default: ''
 			}
