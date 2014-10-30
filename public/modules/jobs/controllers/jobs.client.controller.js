@@ -83,10 +83,20 @@ angular.module('jobs').controller('JobsController', ['$scope', '$http', '$stateP
 			});
 		};
 
-    $scope.findUser = function() {
-      $scope.job = Jobs.get({
-        jobId: $stateParams.jobId
-      });
-    };
+		$scope.sendInterest = function(){
+			console.log('sendInterest button presses');
+			$http.post('/jobs/' + $scope.job._id + '/candidates');
+		};
+
+		$scope.getInterestedCandidates = function(){
+			$http.get('/jobs/' + $scope.job._id + '/candidates')
+				.then(console.log('hello'));
+		};
+
+	    $scope.findUser = function() {
+	      $scope.job = Jobs.get({
+	        jobId: $stateParams.jobId
+	      });
+	    };
 	}
 ]);

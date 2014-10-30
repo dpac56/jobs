@@ -12,6 +12,10 @@ module.exports = function(app) {
 		.get(jobs.list)
 		.post(users.requiresLogin, jobs.hasRoleAuthorization, jobs.create);
 
+	app.route('/jobs/:jobId/candidates')
+		.get(jobs.readCandidates)
+		.post(users.requiresLogin, jobs.hasCandidateAuthorization, jobs.addCandidate);
+
 	app.route('/jobs/:jobId')
 		.get(jobs.read)
 		.put(users.requiresLogin, jobs.hasAuthorization, jobs.update)

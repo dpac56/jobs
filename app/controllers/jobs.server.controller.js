@@ -37,6 +37,48 @@ exports.create = function(req, res) {
 	});
 };
 
+
+/**
+ * Add candidates to jobs
+ */
+exports.addCandidate = function(req, res) {
+	var job = req.job;
+
+	job.candidates.push(req.user.id);
+
+	job.save(function(err){
+		if (err){
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			res.jsonp(job);
+		}
+	});
+};
+
+exports.readCandidates = function(req, res){
+	var job = req.job;
+
+	res.jsonp(job.candidates);
+};
+
+exports.hasCandidateAuthorization = function(req, res, next){
+	if (req.originalMethod !== 'POST' || req.route.path !== '/jobs/:jobId/candidates'){
+		return res.status(403).send({
+			message: 'User is not authorized'
+		});
+	}
+	next();
+};
+
+
+
+
+/**
+ * Send mails to employers
+ */
+
 exports.sendMail = function(req, res){
 	var mailgun = new Mailgun({apiKey: api_key, domain: domain});
 
@@ -48,7 +90,7 @@ exports.sendMail = function(req, res){
     //Subject and text data  
       subject: req.body.subject,
       html: req.body.msg
-    }
+    };
 
     mailgun.messages().send(data, function (err, body) {
         //If there is an error, render the error page
@@ -60,6 +102,21 @@ exports.sendMail = function(req, res){
             console.log("message sent by sendmail");
         }
     });
+
+ //    var job = req.job;
+ //    console.log(req);
+
+	// job['candidates'].push(req.user.id);
+
+	// job.save(function(err){
+	// 	if (err){
+	// 		return res.status(400).send({
+	// 			message: errorHandler.getErrorMessage(err)
+	// 		});
+	// 	} else {
+	// 		res.jsonp(job);
+	// 	}
+	// });
 
     console.log("subject is " + req.body.subject + "and message is " + req.body.msg);
 };
