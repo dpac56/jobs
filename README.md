@@ -15,6 +15,10 @@ Work done/ steps taken/ lessons learnt
 13. Send email functionality: Add a form in view-job.view with a function sendMail() that call a express route in jobs.server.routes ('/sendmail') that calls an export.sendmail function in jobs.server.controller. The mailgun configuration is also happening in the same file at the moment. [The email is being sent twice at the moment]
 14. Set up a LinkedIn app and configure the credentials in config/env/development.js
 15. In linkedin.js you can add more profile fields by changing the array profileFields
+16. Add candidates to a job - we first create a route in job.server.routes to which a post request is being done. Add a new candidate field in the job schema that has ObjectId schema and a ref user. We also add a different authorization for this function. 
+17. The request is being given the job object by the jobById function that comes into being anytime the route has a jobId parameter
+18. A cross referenced schema can be populated by the mongoose function .populate 
+19. We also added a manual approval field in the Job schema 'accountStatus'
 
 
 

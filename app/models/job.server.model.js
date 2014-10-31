@@ -35,10 +35,10 @@ var JobSchema = new Schema({
 		default: '',
 		trim: true
 	},
-	candidates: {
-		type: [Schema.ObjectId],
+	candidates: [{
+		type: Schema.ObjectId,
 		ref: 'User'
-	},
+	}],
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'

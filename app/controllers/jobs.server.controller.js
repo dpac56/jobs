@@ -184,7 +184,7 @@ exports.list = function(req, res) {
  * Job middleware
  */
 exports.jobByID = function(req, res, next, id) {
-	Job.findById(id).populate('user').exec(function(err, job) {
+	Job.findById(id).populate('user').populate('candidates').exec(function(err, job) {
 		if (err) return next(err);
 		if (!job) return next(new Error('Failed to load job ' + id));
 		req.job = job;
@@ -208,6 +208,15 @@ exports.hasRoleAuthorization = function(req, res, next) {
   if (req.user.roles[0] !== 'admin') {
     return res.status(403).send({
       message: 'User Role is not authorized'
+    });
+  }
+  next();
+};
+
+exports.hasAcccountApproved = function(req, res, next) {
+  if (req.user.accountStatus !== 'approved') {
+    return res.status(403).send({
+      message: 'Your account is pending approval'
     });
   }
   next();

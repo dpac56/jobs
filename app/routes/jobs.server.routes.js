@@ -10,7 +10,7 @@ module.exports = function(app) {
 	// Job Routes
 	app.route('/jobs')
 		.get(jobs.list)
-		.post(users.requiresLogin, jobs.hasRoleAuthorization, jobs.create);
+		.post(users.requiresLogin, jobs.hasRoleAuthorization, jobs.hasAcccountApproved, jobs.create);
 
 	app.route('/jobs/:jobId/candidates')
 		.get(jobs.readCandidates)
