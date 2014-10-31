@@ -1,0 +1,11 @@
+<section data-ng-controller="ListCandidatesController" data-ng-init="getCandidates()">
+	<div class="page-header">
+		<h1>Candidates</h1>
+	</div>
+	<div class="list-group">
+		<a data-ng-repeat="user in users" data-ng-href="#!/view-candidate/{{user._id}}" class="list-group-item">
+			<h4 class="list-group-item-heading">{{user.displayName}}</h4>
+		</a>
+	</div>
+
+</section>

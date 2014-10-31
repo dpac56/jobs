@@ -54,3 +54,16 @@ exports.update = function(req, res) {
 exports.me = function(req, res) {
 	res.jsonp(req.user || null);
 };
+
+//send all candidates
+exports.getCandidates = function(req, res) {
+	User.find({'roles': "user"}).exec(function(err, candidates) {
+		if (err) {
+			return res.status(400).send({
+				message: errorHandler.getErrorMessage(err)
+			});
+		} else {
+			res.jsonp(candidates);
+		}
+	});;
+};
