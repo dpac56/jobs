@@ -67,3 +67,12 @@ exports.getCandidates = function(req, res) {
 		}
 	});;
 };
+
+exports.userByID = function(req, res, next, id) {
+	user.findById(id).exec(function(err, user) {
+		if (err) return next(err);
+		if (!user) return next(new Error('Failed to load user ' + id));
+		req.user = user;
+		next();
+	});
+};
