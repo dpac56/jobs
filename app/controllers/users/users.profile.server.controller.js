@@ -67,3 +67,13 @@ exports.getCandidates = function(req, res) {
 		}
 	});;
 };
+
+exports.getCandidateById = function(req, res, id) {
+	
+	id = req.params.userId;
+	
+	User.findOne({"_id": id}).exec(function(err, candidates) {
+		console.log(candidates);
+		res.jsonp(candidates);
+	});
+};

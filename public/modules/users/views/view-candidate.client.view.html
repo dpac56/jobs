@@ -1,3 +1,51 @@
 <section data-ng-controller="ListCandidatesController" data-ng-init="findOne()">
-	{{user.displayName}}
+	<div class="container main-resume">
+		<div class="row">
+			<div class="col-md-9">
+				<div class="panel panel-primary">
+				  <div class="panel-heading">
+				    <h3 class="panel-title">Professional Qualifications</h3>
+				  </div>
+				  <ul class="list-group">
+				  	<li class="list-group-item">One</li>
+				  	<li class="list-group-item">Two</li>
+				  	<li class="list-group-item">Three</li>
+				  </ul>
+				</div>
+
+				<div class="panel panel-primary">
+				  <div class="panel-heading">
+				    <h3 class="panel-title">Educational Qualifications</h3>
+				  </div>
+				  <ul class="list-group">
+				  	<li class="list-group-item">One</li>
+				  	<li class="list-group-item">Two</li>
+				  	<li class="list-group-item">Three</li>
+				  </ul>
+				</div>
+			</div>
+			<div class="col-md-3 image-section">
+				<div class="panel panel-primary">
+				  <div class="panel-heading">
+				    <h3 class="panel-title">{{user.displayName}}</h3>
+				  </div>
+				  <div class="panel-body">
+				    <img ng-src="{{user.providerData.pictureUrl}}" style="height:150px;width:150px" alt="">
+				  </div>
+				</div>
+				<div class="panel panel-info">
+				  <div class="panel-heading">
+				    <h3 class="panel-title">Interested in</h3>
+				  </div>
+				  <div class="panel-body">
+				    <ul class="list-group">
+				  	<li class="list-group-item">One</li>
+				  	<li class="list-group-item">Two</li>
+				  	<li class="list-group-item">Three</li>
+				  </ul>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
 </section>
