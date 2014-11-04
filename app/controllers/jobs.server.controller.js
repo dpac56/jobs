@@ -184,7 +184,7 @@ exports.list = function(req, res) {
  * Job middleware
  */
 exports.jobByID = function(req, res, next, id) {
-	Job.findById(id).populate('user').populate('candidates', '_id').exec(function(err, job) {
+	Job.findById(id).populate('user').populate('candidates', '_id, providerData.firstName').exec(function(err, job) {
 		if (err) return next(err);
 		if (!job) return next(new Error('Failed to load job ' + id));
 		req.job = job;

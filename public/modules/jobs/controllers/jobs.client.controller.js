@@ -93,7 +93,7 @@ angular.module('jobs').controller('JobsController', ['$scope', '$http', '$stateP
 		$scope.getInterestedCandidates = function(){
 			$http.get('/jobs/' + $scope.job._id + '/candidates')
 				.success(function(data){
-					$scope.interestedCadidates = data;
+					$scope.interestedCandidates = data;
 					console.log(data);
 				});
 		};

@@ -80,7 +80,7 @@ angular.module('users').controller('ListCandidatesController', ['$scope', 'Users
 		}
 
 		$scope.findOne = function() {
-			console.log($stateParams.candidateId);
+			// console.log($stateParams.candidateId);
 			$scope.user = Users.get({
 				userId: $stateParams.candidateId
 			});

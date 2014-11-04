@@ -82,6 +82,13 @@
 		<a class="btn btn-primary" data-ng-click="remove();">
 			<i class="glyphicon glyphicon-trash"></i>
 		</a>
+		<div ng-if="interestedCandidates">
+			<ul>
+				<li ng-repeat="candidate in interestedCandidates">
+					<a data-ng-href="#!/view-candidate/{{candidate._id}}">{{candidate.providerData.firstName}}</a>
+				</li>
+			</ul>
+		</div>
 	</div>
 	<!-- <small>
 		<em class="text-muted">
