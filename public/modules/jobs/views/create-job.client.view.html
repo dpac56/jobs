@@ -1,11 +1,12 @@
 <section data-ng-controller="JobsController">
+	<div class="container">
 	<div class="page-header">
 		<h1>New Job</h1>
 	</div>
 	<div class="col-md-12">
 		<form name="jobForm" class="form-horizontal" data-ng-submit="create()" novalidate>
 			<fieldset>
-				<div class="col-md-4">
+				<div class="col-md-3">
 					<div class="form-group" ng-class="{ 'has-error': jobForm.title.$dirty && jobForm.title.$invalid }">
 						<label class="control-label" for="title">Title</label>
 						<div class="controls">
@@ -14,14 +15,22 @@
 					</div>
 				</div>
 
-				<div class="col-md-4 form-group">
+				
+				<div class="col-md-3 form-group">
+					<label class="control-label" for="type">Company Name</label>
+						<div class="controls">
+							<input name="companyName" type="text" data-ng-model="companyName" id="companyName" class="form-control" placeholder="Company Name" required>
+						</div>
+				</div>
+
+				<div class="col-md-3 form-group">
 					<label class="control-label" for="category">Job Category</label>
 						<div class="controls">
 							<select data-ng-model="category" class="form-control" placeholder="Job Category" ng-options="category.name for category in jobCategories" value="{{category.name}}"></select><br>
 						</div>
 				</div>
 
-				<div class="col-md-4 form-group">
+				<div class="col-md-3 form-group">
 					<label class="control-label" for="type">Job Type</label>
 						<div class="controls">
 							<select data-ng-model="type" class="form-control" placeholder="Job Type" ng-options="type.name for type in jobTypes" value="{{type.name}}"></select><br> 
@@ -43,5 +52,6 @@
 				</div>
 			</fieldset>
 		</form>
+	</div>
 	</div>
 </section>

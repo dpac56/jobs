@@ -1,20 +1,43 @@
 <section data-ng-controller="JobsController" data-ng-init="find()">
-	<div class="page-header">
-		<h1>Jobs</h1>
-	</div>
-	<div class="list-group">
-		<a data-ng-repeat="job in jobs" data-ng-href="#!/jobs/{{job._id}}" class="list-group-item">
-			<small class="list-group-item-text">
-				Posted on
-				<span data-ng-bind="job.created | date:'mediumDate'"></span>
-				by
-				<span data-ng-bind="job.user.displayName"></span>
-			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="job.title"></h4>
-			<p class="list-group-item-text" data-ng-bind="job.content"></p>
-		</a>
-	</div>
-	<div class="alert alert-warning text-center" data-ng-if="jobs.$resolved && !jobs.length">
-		No jobs yet, why don't you <a href="/#!/jobs/create">create one</a>?
+	<div class="container">
+		<div class="page-header">
+			<h1 style="font-family: Georgia;">Latest Job Postings</h1>
+		</div>
+
+		<input type="text" class="form-control" ng-model="jobFilter" placeholder="Search">
+		<br /> <br />
+		<div class="list-group">
+			<!-- <a data-ng-repeat="job in jobs | filter: jobFilter" data-ng-href="#!/jobs/{{job._id}}" class="list-group-item"> -->
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<td class="col-md-1">Date</td>
+						<td class="col-md-2">Title</td>
+						<td class="col-md-6">Description</td>
+						<td class="col-md-2">Company</td>
+						<td class="col-md-1">Details</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr data-ng-repeat="job in jobs | filter: jobFilter">
+						<td data-ng-bind="job.created | date:'mediumDate'"></td>
+						<td data-ng-bind="job.title"></td>
+						<td data-ng-bind="job.content | limitTo : 150"></td>
+						<td data-ng-bind="job.companyName"></td>
+						<td><a data-ng-href="#!/jobs/{{job._id}}">More</a></td>
+					</tr>
+				</tbody>
+			</table>
+				<!-- <small class="list-group-item-text">
+					Posted on
+					<span data-ng-bind="job.created | date:'mediumDate'"></span>
+				</small>
+				<h4 class="list-group-item-heading" data-ng-bind="job.title"></h4>
+				<h4 class="list-group-item-heading" data-ng-bind="job.companyName"></h4>
+				<p class="list-group-item-text" data-ng-bind="job.content"></p> -->
+		</div>
+		<div class="alert alert-warning text-center" data-ng-if="jobs.$resolved && !jobs.length">
+			No jobs yet, why don't you <a href="/#!/jobs/create">create one</a>?
+		</div>
 	</div>
 </section>

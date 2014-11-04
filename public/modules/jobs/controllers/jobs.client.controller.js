@@ -25,6 +25,7 @@ angular.module('jobs').controller('JobsController', ['$scope', '$http', '$stateP
 		$scope.create = function() {
 			var job = new Jobs({
 				title: this.title,
+				companyName: this.companyName,
 				content: this.content,
 				category: this.category.name,
 				type: this.type.name
@@ -33,6 +34,7 @@ angular.module('jobs').controller('JobsController', ['$scope', '$http', '$stateP
 				$location.path('jobs/' + response._id);
 
 				$scope.title = '';
+				$scope.companyName = '';
 				$scope.content = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;

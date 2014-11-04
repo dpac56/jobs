@@ -13,3 +13,31 @@
 .ng-valid.ng-dirty{
     border-color:#78FA89;
 }
+
+.wide {
+  height:400px;
+  background-image:url('../img/brand/jumbo-image.jpg');
+  background-size:cover;
+  text-align: center;
+}
+
+.navbar-inverse{
+	background-image: linear-gradient(to bottom, rgba(34, 109, 156, 1) 0%, #222 100%);
+	color: #FFFFFF;;	
+}
+
+
+.brand-color{
+	color: #D7D9F7;
+}
+
+.lead{
+	font-size: 48px;
+	font-weight: bold;
+	color: white;
+}
+
+.wide img {
+  width:100%;
+}
+
