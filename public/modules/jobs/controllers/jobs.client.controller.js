@@ -92,7 +92,10 @@ angular.module('jobs').controller('JobsController', ['$scope', '$http', '$stateP
 
 		$scope.getInterestedCandidates = function(){
 			$http.get('/jobs/' + $scope.job._id + '/candidates')
-				.then(console.log('hello'));
+				.success(function(data){
+					$scope.interestedCadidates = data;
+					console.log(data);
+				});
 		};
 
 	    $scope.findUser = function() {
