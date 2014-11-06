@@ -72,16 +72,16 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 //Controllers below to be put in its own file
 
 
-angular.module('users').controller('ListCandidatesController', ['$scope', 'Users', '$stateParams',
-	function($scope, Users, $stateParams) {
+angular.module('users').controller('ListCandidatesController', ['$scope', 'Candidates', '$stateParams',
+	function($scope, Candidates, $stateParams) {
 		$scope.getCandidates = function(){
-			$scope.users = Users.query();
-			$scope.test = "hello";
+			$scope.users = Candidates.query();
+			
 		}
 
 		$scope.findOne = function() {
 			// console.log($stateParams.candidateId);
-			$scope.user = Users.get({
+			$scope.user = Candidates.get({
 				userId: $stateParams.candidateId
 			});
 		};

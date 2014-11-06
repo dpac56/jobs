@@ -12,3 +12,16 @@ angular.module('users').factory('Users', ['$resource',
 		});
 	}
 ]);
+
+
+angular.module('users').factory('Candidates', ['$resource',
+	function($resource) {
+		return $resource('candidates/:userId', {
+			userId: '@_id'
+		}, {
+			update: {
+				method: 'PUT'
+			}
+		});
+	}
+]);

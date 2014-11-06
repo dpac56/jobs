@@ -57,7 +57,7 @@ exports.me = function(req, res) {
 
 //send all candidates
 exports.getCandidates = function(req, res) {
-	User.find({'roles': "user"}).exec(function(err, candidates) {
+	User.find({'roles': "candidate"}).exec(function(err, candidates) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
@@ -75,4 +75,14 @@ exports.getCandidateById = function(req, res, id) {
 	User.findOne({"_id": id}).exec(function(err, candidates) {
 		res.jsonp(candidates);
 	});
+};
+
+exports.isEmployer = function(req, res, next){
+	console.log(req.user.roles[0])
+	if (req.user.roles[0] !== 'employer'){
+		return res.status(403).send({
+			message: 'User is not authorized'
+		});
+	}
+	next();
 };
