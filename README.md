@@ -20,6 +20,8 @@ Work done/ steps taken/ lessons learnt
 18. A cross referenced schema can be populated by the mongoose function .populate [for example there can be an array of ObjectIds that have a reference of some other schema] - This function can also specify what to return
 19. We also added a manual approval field in the Job schema 'accountStatus'
 20. $resource has some default methods .query expects an array and .get expects an object from the API end point
+21. All authentications are done server side in route functions - so even if someone is not authroized, the client side template will still be rendered
+22. Adding new items in the menu will require editing the jobs.client.config file
 
 
 

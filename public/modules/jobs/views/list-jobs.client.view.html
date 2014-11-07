@@ -19,7 +19,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr data-ng-repeat="job in jobs | filter: jobFilter">
+					<tr data-ng-repeat="job in jobs | filter: jobFilter" class="repeat-animation">
 						<td data-ng-bind="job.created | date:'mediumDate'"></td>
 						<td data-ng-bind="job.title"></td>
 						<td data-ng-bind="job.content | limitTo : 150"></td>

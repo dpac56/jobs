@@ -82,6 +82,7 @@ angular.module('core').service('Menus', [
 		this.addMenuItem = function(menuId, menuItemTitle, menuItemURL, menuItemType, menuItemUIRoute, isPublic, roles, position) {
 			// Validate that the menu exists
 			this.validateMenuExistance(menuId);
+			console.log(menuItemType);
 
 			// Push new menu item
 			this.menus[menuId].items.push({

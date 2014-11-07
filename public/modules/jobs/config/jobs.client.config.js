@@ -7,5 +7,6 @@ angular.module('jobs').run(['Menus',
 		Menus.addMenuItem('topbar', 'Jobs', 'jobs', 'dropdown', '/jobs(/create)?');
 		Menus.addSubMenuItem('topbar', 'jobs', 'List Jobs', 'jobs');
 		Menus.addSubMenuItem('topbar', 'jobs', 'New Job', 'jobs/create');
+		Menus.addMenuItem('topbar', 'Candidates', 'list-candidates', undefined, undefined, undefined, ['employer']);
 	}
 ]);

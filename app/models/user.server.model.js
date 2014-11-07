@@ -113,7 +113,7 @@ var UserSchema = new Schema({
 	},
 	accountStatus: {
 		type: String,
-		default: ''
+		default: 'notApproved'
 	},
 	updated: {
 		type: Date
